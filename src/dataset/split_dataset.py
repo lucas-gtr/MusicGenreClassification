@@ -76,15 +76,15 @@ def move_files_to_folders(dataset_path: str, train_dict: dict, val_dict: dict, t
 
 
 def split_dataset(dataset_path: str,
-                   train_percent: float = 0.7, val_percent: float = 0.2, test_percent: float = 0.1):
+                   train_percent: float, val_percent: float, test_percent: float):
     """
     Split the dataset into training, validation, and test sets and move files accordingly
 
     Args:
         dataset_path (str): Path to the dataset directory
-        train_percent (float, optional): Percentage of data to be used for training. Defaults to 0.7
-        val_percent (float, optional): Percentage of data to be used for validation. Defaults to 0.2
-        test_percent (float, optional): Percentage of data to be used for testing. Defaults to 0.1
+        train_percent (float, optional): Percentage of data to be used for training
+        val_percent (float, optional): Percentage of data to be used for validation
+        test_percent (float, optional): Percentage of data to be used for testing
     """
     train_dict, val_dict, test_dict = get_files_dict(dataset_path,
                                                      train_percent, val_percent, test_percent)

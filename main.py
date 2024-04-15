@@ -6,7 +6,8 @@ from src.dataset.load_dataset import get_dataloader, create_label_index
 from src.train import train_model
 from src.evaluate import eval_model
 from src.query import query_model
-from config import batch_size, epoch_number, sample_rate, sample_length, use_augmentation, num_chunks, device
+from config import batch_size, epoch_number, train_percentage, val_percentage, test_percentage,\
+    sample_rate, sample_length, use_augmentation, num_chunks, device
 
 
 import argparse
@@ -45,7 +46,7 @@ def main():
             print(f"Error: {args.dataset_path} folder not found.")
             return
         if not is_dataset_split(args.dataset_path):
-            split_dataset(args.dataset_path)
+            split_dataset(args.dataset_path, train_percentage, val_percentage, test_percentage)
 
         print(f"Training model for dataset {args.dataset_path}, saving as {args.model_name}")
 
@@ -68,7 +69,7 @@ def main():
             print(f"Error: {args.dataset_path} folder not found.")
             return
         if not is_dataset_split(args.dataset_path):
-            split_dataset(args.dataset_path)
+            split_dataset(args.dataset_path, train_percentage, val_percentage, test_percentage)
 
         print(f"Evaluating model using dataset {args.dataset_path}, using model {args.model_name}")
 
